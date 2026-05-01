@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE Graduate Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Portfolio</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Hi, I'm <span class="highlight">Utsho Mondol</span></h1>
+            <p class="fade-in-delay">CSE Graduate | Web Developer | AI Enthusiast | Journal writter | AI content making & Video editing</p>
+            <a href="#contact" class="cta-btn fade-in-delay-2">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <p>  Recent CSE graduate from University of Liberal Arts angladesh with expertise in 
+    Web Development, AI, and Chatbot solutions, aslo i had professional journal writting exprience, Ai content making, video editing, Ai aumation like chatboat development,agent development (N8N,zapier,claude). Built 10+ projects 
+    and passionate about solving real-world problems.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">Web Development</div>
+            <div class="skill-card">AI Automation</div>
+            <div class="skill-card">Chatbot Development</div>
+            <div class="skill-card">Research & journal Writing</div>
+            <div class="skill-card">AI Content Creation</div>
+            <div class="skill-card">AI video editting</div>
+            <div class="skill-card">AI graphic design</div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>AI Image Generator</h3>
+                <p>Web app using OpenAI DALL-E API to generate images from text prompts.</p>
+                <div class="tech-stack">React, Node.js, OpenAI API</div>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>TaskFlow</h3>
+                <p>Productivity app with task management and real-time collaboration.</p>
+                <div class="tech-stack">MERN Stack, Socket.io</div>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>Chatbot Assistant</h3>
+                <p>Customer support chatbot using NLP and custom training data.</p>
+                <div class="tech-stack">Python, RASA, Flask</div>
+                <a href="#" class="project-link">View Project →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Get In Touch</h2>
+        <form id="contactForm" class="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="formStatus" class="form-status"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Rakib Hasan. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
