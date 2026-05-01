@@ -3,91 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSE Graduate Portfolio</title>
+    <title>Utsho Mondol | Premium Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-brand">Portfolio</div>
-        <div class="nav-links">
-            <a href="#home">Home</a>
+    
+    <!-- Premium Glass Navbar -->
+    <header class="navbar">
+        <div class="nav-brand">PORTFOLIO</div>
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
+        </nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
         </div>
-        <div class="hamburger">☰</div>
-    </nav>
+    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="fade-in">Hi, I'm <span class="highlight">Utsho Mondol</span></h1>
-            <p class="fade-in-delay">CSE Graduate | Web Developer | AI Enthusiast | Journal writter | AI content making & Video editing</p>
-            <a href="#contact" class="cta-btn fade-in-delay-2">Get In Touch</a>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <p>  Recent CSE graduate from University of Liberal Arts angladesh with expertise in 
-    Web Development, AI, and Chatbot solutions, aslo i had professional journal writting exprience, Ai content making, video editing, Ai aumation like chatboat development,agent development (N8N,zapier,claude). Built 10+ projects 
-    and passionate about solving real-world problems.</p>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">Web Development</div>
-            <div class="skill-card">AI Automation</div>
-            <div class="skill-card">Chatbot Development</div>
-            <div class="skill-card">Research & journal Writing</div>
-            <div class="skill-card">AI Content Creation</div>
-            <div class="skill-card">AI video editting</div>
-            <div class="skill-card">AI graphic design</div>
-        </div>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>AI Image Generator</h3>
-                <p>Web app using OpenAI DALL-E API to generate images from text prompts.</p>
-                <div class="tech-stack">React, Node.js, OpenAI API</div>
-                <a href="#" class="project-link">View Project →</a>
+    <!-- Smooth Reveal Container -->
+    <main class="smooth-scroll-wrapper">
+        
+        <!-- HOME SECTION -->
+        <section id="home" class="hero bg-hero">
+            <div class="hero-container hidden-element">
+                <div class="hero-text">
+                    <h2 class="greeting">Hi, I'm</h2>
+                    <h1 class="name-glow">Utsho Mondol</h1>
+                    <p class="role-text">CSE Graduate | AI Enthusiast | Web Developer</p>
+                    <p class="sub-role">Specializing in AI Content, Automation & Journal Writing.</p>
+                    <a href="#contact" class="btn-premium">Let's Collaborate</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="image-glow"></div>
+                    <img src="profile.jpg" alt="Utsho Mondol Profile" class="profile-img">
+                </div>
             </div>
-            <div class="project-card">
-                <h3>TaskFlow</h3>
-                <p>Productivity app with task management and real-time collaboration.</p>
-                <div class="tech-stack">MERN Stack, Socket.io</div>
-                <a href="#" class="project-link">View Project →</a>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about">
+            <div class="section-heading hidden-element">
+                <h2>About <span class="highlight">Me</span></h2>
+                <div class="heading-line"></div>
             </div>
-            <div class="project-card">
-                <h3>Chatbot Assistant</h3>
-                <p>Customer support chatbot using NLP and custom training data.</p>
-                <div class="tech-stack">Python, RASA, Flask</div>
-                <a href="#" class="project-link">View Project →</a>
+            <div class="glass-card about-card hidden-element">
+                <p>Recent CSE graduate from University of Liberal Arts Bangladesh with expertise in <strong>Web Development, AI, and Chatbot solutions.</strong> I also possess professional journal writing experience, AI content making, video editing, and AI automation (N8N, Zapier, Claude). Having built 10+ robust projects, I am deeply passionate about solving real-world problems through innovative technology.</p>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills bg-skills">
+            <div class="section-heading hidden-element">
+                <h2>Technical <span class="highlight">Skills</span></h2>
+                <p class="subtitle">Select a skill to view related showcase</p>
+                <div class="heading-line"></div>
+            </div>
+            <div class="skills-grid">
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-web')">
+                    <h3>Web Development</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-ai')">
+                    <h3>AI Automation</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-chat')">
+                    <h3>Chatbot Development</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-research')">
+                    <h3>Research & Journal Writing</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-content')">
+                    <h3>AI Content Creation</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-video')">
+                    <h3>AI Video Editing</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-graphic')">
+                    <h3>AI Graphic Design</h3>
+                    <div class="view-more">View Work <span>→</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="projects">
+            <div class="section-heading hidden-element">
+                <h2>Featured <span class="highlight">Projects</span></h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="glass-card project-card hidden-element">
+                    <div class="project-info">
+                        <h3>AI Image Generator</h3>
+                        <p>Web app utilizing OpenAI DALL-E API for seamless text-to-image generation.</p>
+                        <span class="tech-badge">React</span> <span class="tech-badge">Node.js</span>
+                    </div>
+                </div>
+                <div class="glass-card project-card hidden-element">
+                    <div class="project-info">
+                        <h3>TaskFlow</h3>
+                        <p>High-end productivity app featuring real-time task collaboration.</p>
+                        <span class="tech-badge">MERN</span> <span class="tech-badge">Socket.io</span>
+                    </div>
+                </div>
+                <div class="glass-card project-card hidden-element">
+                    <div class="project-info">
+                        <h3>Chatbot Assistant</h3>
+                        <p>NLP-powered customer support chatbot trained on custom logic data.</p>
+                        <span class="tech-badge">Python</span> <span class="tech-badge">RASA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="contact bg-contact">
+            <div class="section-heading hidden-element">
+                <h2>Get In <span class="highlight">Touch</span></h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="glass-card form-wrapper hidden-element">
+                <form class="contact-form">
+                    <div class="input-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-premium">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2026 Utsho Mondol. All rights reserved.</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- ================= SKILL MODALS ================= -->
+    <div id="modal-web" class="modal">
+        <div class="modal-box glass-card">
+            <span class="close-modal" onclick="closeModal('modal-web')">&times;</span>
+            <h2 class="highlight">Web Development</h2>
+            <div class="modal-body">
+                <p><strong>1. E-Commerce Platform</strong> - Full-stack MERN application.</p>
+                <p><strong>2. Corporate Portfolio</strong> - Dynamic agency website.</p>
+                <p><em>(Insert your links/images here later)</em></p>
             </div>
         </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Get In Touch</h2>
-        <form id="contactForm" class="contact-form">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
-        <div id="formStatus" class="form-status"></div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Rakib Hasan. All rights reserved.</p>
-    </footer>
+    </div>
+    
+    <div id="modal-ai" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-ai')">&times;</span><h2 class="highlight">AI Automation</h2><div class="modal-body"><p>Automated Lead Generation using N8N, Zapier, and Claude Agents.</p></div></div></div>
+    
+    <div id="modal-chat" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-chat')">&times;</span><h2 class="highlight">Chatbot Development</h2><div class="modal-body"><p>Custom RASA & Dialogflow agents for customer support.</p></div></div></div>
+    
+    <div id="modal-research" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-research')">&times;</span><h2 class="highlight">Research & Journals</h2><div class="modal-body"><p>Academic publications and technical journal writing.</p></div></div></div>
+    
+    <div id="modal-content" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-content')">&times;</span><h2 class="highlight">AI Content Creation</h2><div class="modal-body"><p>Prompt engineering, automated blogs, and AI copywriting.</p></div></div></div>
+    
+    <div id="modal-video" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-video')">&times;</span><h2 class="highlight">AI Video Editing</h2><div class="modal-body"><p>Synthesia, RunwayML, and automated video workflows.</p></div></div></div>
+    
+    <div id="modal-graphic" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-graphic')">&times;</span><h2 class="highlight">AI Graphic Design</h2><div class="modal-body"><p>Midjourney & DALL-E generated brand assets.</p></div></div></div>
 
     <script src="script.js"></script>
 </body>

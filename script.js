@@ -1,85 +1,87 @@
-// Mobile menu toggle
+// ================= MOBILE NAVBAR MENU =================
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
 hamburger.addEventListener('click', () => {
-    if (navLinks.style.display === 'flex') {
-        navLinks.style.display = 'none';
-    } else {
-        navLinks.style.display = 'flex';
-        navLinks.style.flexDirection = 'column';
-        navLinks.style.position = 'absolute';
-        navLinks.style.top = '70px';
-        navLinks.style.left = '0';
-        navLinks.style.width = '100%';
-        navLinks.style.backgroundColor = 'white';
-        navLinks.style.padding = '1rem';
-        navLinks.style.gap = '1rem';
-    }
+    navLinks.classList.toggle('active-menu');
 });
 
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-            if (window.innerWidth <= 768) {
-                navLinks.style.display = 'none';
-            }
-        }
+// Close menu when a link is clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active-menu');
     });
 });
 
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
 
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-    
-    if (name && email && message) {
-        window.location.href = `mailto:mondal183mr@gmail.com?subject=Portfolio Contact from ${name}&body=${message}%0A%0AReply to: ${email}`;
-        formStatus.innerHTML = '✅ Thank you! I\'ll get back to you soon.';
-        formStatus.style.color = 'green';
-        contactForm.reset();
-        
-        setTimeout(() => {
-            formStatus.innerHTML = '';
-        }, 3000);
-    } else {
-        formStatus.innerHTML = '❌ Please fill all fields.';
-        formStatus.style.color = 'red';
-        
-        setTimeout(() => {
-            formStatus.innerHTML = '';
-        }, 3000);
-    }
-});
-
-// Add animation on scroll
+// ================= SMOOTH SCROLL REVEAL ANIMATION =================
+// This gives the premium "fade-in up" effect as the user scrolls
 const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Triggers when 15% of the element is visible
 };
 
-const observer = new IntersectionObserver((entries) => {
+const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
+            entry.target.classList.add('show-element');
+            observer.unobserve(entry.target); // Stop observing once revealed
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.skill-card, .project-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.6s ease';
-    observer.observe(el);
+// Select all elements to animate
+const hiddenElements = document.querySelectorAll('.hidden-element');
+hiddenElements.forEach((el) => observer.observe(el));
+
+
+// ================= STICKY NAVBAR HIGHLIGHTING =================
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').includes(current)) {
+            item.classList.add('active');
+        }
+    });
+});
+
+
+// ================= MODAL (POP-UP) LOGIC =================
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'flex';
+        // Prevent body scrolling when modal is open
+        document.body.style.overflow = 'hidden'; 
+    }
+}
+
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'none';
+        // Restore body scrolling
+        document.body.style.overflow = 'auto'; 
+    }
+}
+
+// Close modal when clicking completely outside the modal box
+window.addEventListener('click', (event) => {
+    if (event.target.classList.contains('modal')) {
+        event.target.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 });
