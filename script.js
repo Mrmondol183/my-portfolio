@@ -1,40 +1,66 @@
+// ================= RENDER PROJECTS FROM projects.js =================
+/**
+ * এই ফাংশনটি projects.js থেকে ডাটা নিয়ে HTML এ কার্ড তৈরি করবে।
+ * আপনার HTML এ অবশ্যই একটি container থাকতে হবে যার id="projects-grid"
+ */
+function renderProjects() {
+    const projectsGrid = document.querySelector('.projects-grid'); 
+    
+    // চেক করা হচ্ছে projects.js এর PROJECTS ভ্যারিয়েবলটি আছে কিনা
+    if (typeof PROJECTS !== 'undefined' && projectsGrid) {
+        projectsGrid.innerHTML = PROJECTS.map(project => `
+            <div class="project-card hidden-element">
+                <div class="project-number">${project.number}</div>
+                <div class="project-emoji" style="font-size: 3rem;">${project.emoji}</div>
+                <h3>${project.title}</h3>
+                <p>${project.shortDesc}</p>
+                <div class="tech-stack">
+                    ${project.tech.map(t => `<span class="tech-badge">${t}</span>`).join('')}
+                </div>
+                <button class="view-btn" onclick="openModal('${project.id}-modal')">View Details</button>
+            </div>
+        `).join('');
+
+        // কার্ডগুলো রেন্ডার হওয়ার পর আবার এনিমেশন অবজর্ভারকে জানানো হচ্ছে
+        const newElements = document.querySelectorAll('.hidden-element');
+        newElements.forEach((el) => observer.observe(el));
+    }
+}
+
 // ================= MOBILE NAVBAR MENU =================
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active-menu');
-});
+if(hamburger) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active-menu');
+    });
+}
 
-// Close menu when a link is clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active-menu');
     });
 });
 
-
 // ================= SMOOTH SCROLL REVEAL ANIMATION =================
-// This gives the premium "fade-in up" effect as the user scrolls
 const observerOptions = {
     root: null,
     rootMargin: '0px',
-    threshold: 0.15 // Triggers when 15% of the element is visible
+    threshold: 0.15 
 };
 
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show-element');
-            observer.unobserve(entry.target); // Stop observing once revealed
+            observer.unobserve(entry.target); 
         }
     });
 }, observerOptions);
 
-// Select all elements to animate
 const hiddenElements = document.querySelectorAll('.hidden-element');
 hiddenElements.forEach((el) => observer.observe(el));
-
 
 // ================= STICKY NAVBAR HIGHLIGHTING =================
 const sections = document.querySelectorAll('section');
@@ -58,13 +84,11 @@ window.addEventListener('scroll', () => {
     });
 });
 
-
 // ================= MODAL (POP-UP) LOGIC =================
 function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'flex';
-        // Prevent body scrolling when modal is open
         document.body.style.overflow = 'hidden'; 
     }
 }
@@ -73,15 +97,18 @@ function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (modal) {
         modal.style.display = 'none';
-        // Restore body scrolling
         document.body.style.overflow = 'auto'; 
     }
 }
 
-// Close modal when clicking completely outside the modal box
 window.addEventListener('click', (event) => {
     if (event.target.classList.contains('modal')) {
         event.target.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
+});
+
+// ================= INITIALIZE =================
+document.addEventListener('DOMContentLoaded', () => {
+    renderProjects(); // পেজ লোড হলে প্রজেক্টগুলো দেখাবে
 });
