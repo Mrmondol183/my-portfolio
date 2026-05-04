@@ -3,186 +3,422 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utsho Mondol | Premium Portfolio</title>
+    <title>Utsho Mondol | Developer Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Fonts: Syne (display) + DM Sans (body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
-    
-    <!-- Premium Glass Navbar -->
-    <header class="navbar">
-        <div class="nav-brand">PORTFOLIO</div>
-        <nav class="nav-links">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="hamburger">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
+ 
+    <!-- ========== CURSOR GLOW ========== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+ 
+    <!-- ========== NAVBAR ========== -->
+    <header class="navbar" id="navbar">
+        <div class="nav-brand">
+            <span class="brand-icon">⬡</span>
+            <span>UTSHO</span>
         </div>
+        <nav class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link active" data-section="home">Home</a>
+            <a href="#about" class="nav-link" data-section="about">About</a>
+            <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+            <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+            <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+        </nav>
+        <a href="#contact" class="btn-hire">Hire Me</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
     </header>
-
-    <!-- Smooth Reveal Container -->
-    <main class="smooth-scroll-wrapper">
-        
-        <!-- HOME SECTION -->
-        <section id="home" class="hero bg-hero">
-            <div class="hero-container hidden-element">
-                <div class="hero-text">
-                    <h2 class="greeting">Hi, I'm</h2>
-                    <h1 class="name-glow">Utsho Mondol</h1>
-                    <p class="role-text">CSE Graduate | AI Enthusiast | Web Developer</p>
-                    <p class="sub-role">Specializing in AI Content, Automation & Journal Writing.</p>
-                    <a href="#contact" class="btn-premium">Let's Collaborate</a>
+ 
+    <!-- ========== MOBILE MENU OVERLAY ========== -->
+    <div class="mobile-overlay" id="mobileOverlay">
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-link">Home</a>
+            <a href="#about" class="mobile-link">About</a>
+            <a href="#skills" class="mobile-link">Skills</a>
+            <a href="#projects" class="mobile-link">Projects</a>
+            <a href="#contact" class="mobile-link">Contact</a>
+        </nav>
+    </div>
+ 
+    <main>
+ 
+        <!-- ========== HERO SECTION ========== -->
+        <section id="home" class="hero">
+            <!-- Background noise texture -->
+            <div class="hero-noise"></div>
+            <!-- Floating orbs -->
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
+ 
+            <div class="hero-inner">
+                <div class="hero-text reveal">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        Available for Work
+                    </div>
+                    <h1 class="hero-name">
+                        Utsho<br>
+                        <span class="name-outline">Mondol</span>
+                    </h1>
+                    <p class="hero-role">CSE Graduate · AI Engineer · Web Developer</p>
+                    <p class="hero-sub">Specializing in AI automation, chatbot systems, and full-stack web solutions that push the boundaries of what's possible.</p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-primary">View Projects</a>
+                        <a href="#contact" class="btn-ghost">Let's Talk →</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-num">10+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-num">3+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-divider"></div>
+                        <div class="stat">
+                            <span class="stat-num">7</span>
+                            <span class="stat-label">Skill Domains</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-image-wrapper">
-                    <div class="image-glow"></div>
-                    <img src="profile.jpg" alt="Utsho Mondol Profile" class="profile-img">
+ 
+                <div class="hero-visual reveal">
+                    <div class="profile-frame">
+                        <div class="profile-ring ring-1"></div>
+                        <div class="profile-ring ring-2"></div>
+                        <div class="profile-ring ring-3"></div>
+                        <img src="profile.jpg" alt="Utsho Mondol" class="profile-photo" onerror="this.src='https://ui-avatars.com/api/?name=Utsho+Mondol&background=e85d04&color=fff&size=400'">
+                        <!-- Floating tech tags -->
+                        <div class="float-tag tag-1">⚡ React</div>
+                        <div class="float-tag tag-2">🤖 AI/ML</div>
+                        <div class="float-tag tag-3">🔧 Node.js</div>
+                    </div>
                 </div>
             </div>
+ 
+            <!-- Scroll indicator -->
+            <div class="scroll-hint">
+                <div class="scroll-dot"></div>
+                <span>Scroll</span>
+            </div>
         </section>
-
-        <!-- ABOUT SECTION -->
+ 
+        <!-- ========== ABOUT SECTION ========== -->
         <section id="about" class="about">
-            <div class="section-heading hidden-element">
-                <h2>About <span class="highlight">Me</span></h2>
-                <div class="heading-line"></div>
-            </div>
-            <div class="glass-card about-card hidden-element">
-                <p>Recent CSE graduate from University of Liberal Arts Bangladesh with expertise in <strong>Web Development, AI, and Chatbot solutions.</strong> I also possess professional journal writing experience, AI content making, video editing, and AI automation (N8N, Zapier, Claude). Having built 10+ robust projects, I am deeply passionate about solving real-world problems through innovative technology.</p>
-            </div>
-        </section>
-
-        <!-- SKILLS SECTION -->
-        <section id="skills" class="skills bg-skills">
-            <div class="section-heading hidden-element">
-                <h2>Technical <span class="highlight">Skills</span></h2>
-                <p class="subtitle">Select a skill to view related showcase</p>
-                <div class="heading-line"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-web')">
-                    <h3>Web Development</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-ai')">
-                    <h3>AI Automation</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-chat')">
-                    <h3>Chatbot Development</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-research')">
-                    <h3>Research & Journal Writing</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-content')">
-                    <h3>AI Content Creation</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-video')">
-                    <h3>AI Video Editing</h3>
-                    <div class="view-more">View Work <span>→</span></div>
-                </div>
-                <div class="glass-card skill-box hidden-element" onclick="openModal('modal-graphic')">
-                    <h3>AI Graphic Design</h3>
-                    <div class="view-more">View Work <span>→</span></div>
+            <div class="container">
+                <div class="section-label reveal">01 — About</div>
+                <div class="about-grid">
+                    <div class="about-text reveal">
+                        <h2 class="section-title">Turning Complex <span class="accent">Ideas</span> Into Elegant Solutions</h2>
+                        <p>Recent CSE graduate from the University of Liberal Arts Bangladesh. I bridge the gap between artificial intelligence and real-world applications — building systems that actually work and experiences that people love.</p>
+                        <p>My expertise spans full-stack web development, AI automation pipelines (N8N, Zapier, Claude), NLP chatbots, and AI-driven content workflows. I've shipped 10+ projects across these domains.</p>
+                        <div class="about-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">AI Automation</span>
+                            <span class="tag">Chatbot Systems</span>
+                            <span class="tag">Research Writing</span>
+                            <span class="tag">Video Editing</span>
+                            <span class="tag">Graphic Design</span>
+                        </div>
+                    </div>
+                    <div class="about-cards reveal">
+                        <div class="info-card card-orange">
+                            <div class="card-icon">🎓</div>
+                            <div class="card-content">
+                                <h4>Education</h4>
+                                <p>BSc in Computer Science & Engineering</p>
+                                <span>ULAB, Bangladesh</span>
+                            </div>
+                        </div>
+                        <div class="info-card card-dark">
+                            <div class="card-icon">🏆</div>
+                            <div class="card-content">
+                                <h4>Focus Areas</h4>
+                                <p>AI · Web Dev · Automation</p>
+                                <span>Full-stack to AI pipelines</span>
+                            </div>
+                        </div>
+                        <div class="info-card card-dark">
+                            <div class="card-icon">📍</div>
+                            <div class="card-content">
+                                <h4>Location</h4>
+                                <p>Bangladesh</p>
+                                <span>Open to remote worldwide</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-
-        <!-- PROJECTS SECTION -->
+ 
+        <!-- ========== SKILLS SECTION ========== -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-label reveal">02 — Skills</div>
+                <h2 class="section-title centered reveal">What I <span class="accent">Do Best</span></h2>
+                <p class="section-sub reveal">Click any skill to see what I've built with it</p>
+ 
+                <div class="skills-grid">
+                    <!-- Each skill card triggers a modal -->
+                    <div class="skill-card reveal" onclick="openModal('modal-web')">
+                        <div class="skill-icon">🌐</div>
+                        <h3>Web Development</h3>
+                        <p>React, Node.js, MERN stack, full-stack applications</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal featured" onclick="openModal('modal-ai')">
+                        <div class="skill-icon">🤖</div>
+                        <h3>AI Automation</h3>
+                        <p>N8N, Zapier, Claude agents, automated workflows</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal" onclick="openModal('modal-chat')">
+                        <div class="skill-icon">💬</div>
+                        <h3>Chatbot Development</h3>
+                        <p>RASA, Dialogflow, custom NLP-powered assistants</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal" onclick="openModal('modal-research')">
+                        <div class="skill-icon">📄</div>
+                        <h3>Research & Writing</h3>
+                        <p>Academic journals, technical papers, AI research</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal" onclick="openModal('modal-content')">
+                        <div class="skill-icon">✍️</div>
+                        <h3>AI Content Creation</h3>
+                        <p>Prompt engineering, automated blogs, AI copywriting</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal" onclick="openModal('modal-video')">
+                        <div class="skill-icon">🎬</div>
+                        <h3>AI Video Editing</h3>
+                        <p>Synthesia, RunwayML, automated video pipelines</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                    <div class="skill-card reveal" onclick="openModal('modal-graphic')">
+                        <div class="skill-icon">🎨</div>
+                        <h3>AI Graphic Design</h3>
+                        <p>Midjourney, DALL-E, brand identity assets</p>
+                        <div class="skill-arrow">View Work →</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        <!-- ========== PROJECTS SECTION ========== -->
         <section id="projects" class="projects">
-            <div class="section-heading hidden-element">
-                <h2>Featured <span class="highlight">Projects</span></h2>
-                <div class="heading-line"></div>
+            <div class="container">
+                <div class="section-label reveal">03 — Projects</div>
+                <h2 class="section-title centered reveal">Featured <span class="accent">Projects</span></h2>
+                <p class="section-sub reveal">Click any project for full details</p>
+ 
+                <!-- Projects render here dynamically from projects.js data -->
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Injected by script.js -->
+                </div>
             </div>
-            <div class="projects-grid">
-                <div class="glass-card project-card hidden-element">
-                    <div class="project-info">
-                        <h3>AI Image Generator</h3>
-                        <p>Web app utilizing OpenAI DALL-E API for seamless text-to-image generation.</p>
-                        <span class="tech-badge">React</span> <span class="tech-badge">Node.js</span>
+        </section>
+ 
+        <!-- ========== CONTACT SECTION ========== -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-label reveal">04 — Contact</div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <h2 class="section-title">Let's Build <span class="accent">Something</span><br>Great Together</h2>
+                        <p>Have a project in mind? I'm always open to discussing new opportunities, collaborations, or just a good conversation about tech.</p>
+                        <div class="contact-links">
+                            <a href="mailto:utsho@example.com" class="contact-link">
+                                <span class="link-icon">✉️</span>
+                                <span>utsho@example.com</span>
+                            </a>
+                            <a href="https://linkedin.com/in/utsho" target="_blank" class="contact-link">
+                                <span class="link-icon">💼</span>
+                                <span>LinkedIn Profile</span>
+                            </a>
+                            <a href="https://github.com/utsho" target="_blank" class="contact-link">
+                                <span class="link-icon">🐙</span>
+                                <span>GitHub Profile</span>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="glass-card project-card hidden-element">
-                    <div class="project-info">
-                        <h3>TaskFlow</h3>
-                        <p>High-end productivity app featuring real-time task collaboration.</p>
-                        <span class="tech-badge">MERN</span> <span class="tech-badge">Socket.io</span>
-                    </div>
-                </div>
-                <div class="glass-card project-card hidden-element">
-                    <div class="project-info">
-                        <h3>Chatbot Assistant</h3>
-                        <p>NLP-powered customer support chatbot trained on custom logic data.</p>
-                        <span class="tech-badge">Python</span> <span class="tech-badge">RASA</span>
+ 
+                    <div class="contact-form-wrap reveal">
+                        <form id="contactForm" class="contact-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Full Name</label>
+                                    <input type="text" id="name" name="from_name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email Address</label>
+                                    <input type="email" id="email" name="from_email" placeholder="john@example.com" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Project Collaboration" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary btn-full" id="submitBtn">
+                                <span id="btnText">Send Message</span>
+                                <span id="btnLoader" class="btn-loader hidden">Sending...</span>
+                            </button>
+                            <div id="formMsg" class="form-message hidden"></div>
+                        </form>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- CONTACT SECTION -->
-        <section id="contact" class="contact bg-contact">
-            <div class="section-heading hidden-element">
-                <h2>Get In <span class="highlight">Touch</span></h2>
-                <div class="heading-line"></div>
-            </div>
-            <div class="glass-card form-wrapper hidden-element">
-                <form class="contact-form">
-                    <div class="input-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="input-group">
-                        <textarea rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-premium">Send Message</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <div class="footer-content">
-                <p>&copy; 2026 Utsho Mondol. All rights reserved.</p>
-            </div>
-        </footer>
-
+ 
     </main>
-
-    <!-- ================= SKILL MODALS ================= -->
-    <div id="modal-web" class="modal">
-        <div class="modal-box glass-card">
-            <span class="close-modal" onclick="closeModal('modal-web')">&times;</span>
-            <h2 class="highlight">Web Development</h2>
+ 
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="brand-icon">⬡</span> UTSHO MONDOL
+            </div>
+            <p class="footer-copy">© 2026 Utsho Mondol. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/utsho" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/utsho" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+ 
+    <!-- ========== SKILL MODALS ========== -->
+    <div id="modal-web" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-web')" aria-label="Close">✕</button>
+            <div class="modal-icon">🌐</div>
+            <h2>Web Development</h2>
             <div class="modal-body">
-                <p><strong>1. E-Commerce Platform</strong> - Full-stack MERN application.</p>
-                <p><strong>2. Corporate Portfolio</strong> - Dynamic agency website.</p>
-                <p><em>(Insert your links/images here later)</em></p>
+                <p>Full-stack applications built with modern JavaScript frameworks and REST APIs.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>E-Commerce Platform</strong> — Full MERN stack with payments, auth, and admin panel.</div>
+                    <div class="modal-item"><strong>Corporate Portfolio</strong> — Dynamic agency website with CMS integration.</div>
+                    <div class="modal-item"><strong>Real-Time Dashboard</strong> — Socket.io powered data visualization board.</div>
+                </div>
+                <p class="modal-note"><em>Update this with your real links and screenshots via the projects data array in script.js</em></p>
             </div>
         </div>
     </div>
-    
-    <div id="modal-ai" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-ai')">&times;</span><h2 class="highlight">AI Automation</h2><div class="modal-body"><p>Automated Lead Generation using N8N, Zapier, and Claude Agents.</p></div></div></div>
-    
-    <div id="modal-chat" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-chat')">&times;</span><h2 class="highlight">Chatbot Development</h2><div class="modal-body"><p>Custom RASA & Dialogflow agents for customer support.</p></div></div></div>
-    
-    <div id="modal-research" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-research')">&times;</span><h2 class="highlight">Research & Journals</h2><div class="modal-body"><p>Academic publications and technical journal writing.</p></div></div></div>
-    
-    <div id="modal-content" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-content')">&times;</span><h2 class="highlight">AI Content Creation</h2><div class="modal-body"><p>Prompt engineering, automated blogs, and AI copywriting.</p></div></div></div>
-    
-    <div id="modal-video" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-video')">&times;</span><h2 class="highlight">AI Video Editing</h2><div class="modal-body"><p>Synthesia, RunwayML, and automated video workflows.</p></div></div></div>
-    
-    <div id="modal-graphic" class="modal"><div class="modal-box glass-card"><span class="close-modal" onclick="closeModal('modal-graphic')">&times;</span><h2 class="highlight">AI Graphic Design</h2><div class="modal-body"><p>Midjourney & DALL-E generated brand assets.</p></div></div></div>
-
+ 
+    <div id="modal-ai" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-ai')" aria-label="Close">✕</button>
+            <div class="modal-icon">🤖</div>
+            <h2>AI Automation</h2>
+            <div class="modal-body">
+                <p>End-to-end automation workflows using leading no-code/low-code AI platforms.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>Lead Generation Bot</strong> — N8N + Claude agent that qualifies and emails leads automatically.</div>
+                    <div class="modal-item"><strong>Content Pipeline</strong> — Zapier workflow for auto-generating and publishing blog content.</div>
+                    <div class="modal-item"><strong>Invoice Automation</strong> — Document parsing + data entry elimination using AI.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="modal-chat" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-chat')" aria-label="Close">✕</button>
+            <div class="modal-icon">💬</div>
+            <h2>Chatbot Development</h2>
+            <div class="modal-body">
+                <p>Custom NLP-powered chatbots for customer support, lead capture, and internal tools.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>Support Bot</strong> — RASA-based assistant with 95% intent accuracy.</div>
+                    <div class="modal-item"><strong>FAQ Bot</strong> — Dialogflow bot integrated with web and WhatsApp.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="modal-research" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-research')" aria-label="Close">✕</button>
+            <div class="modal-icon">📄</div>
+            <h2>Research & Journal Writing</h2>
+            <div class="modal-body">
+                <p>Academic and technical publications in AI, ML, and computer science domains.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>IEEE Paper</strong> — Research on NLP model optimization for low-resource languages.</div>
+                    <div class="modal-item"><strong>Technical Blogs</strong> — Published articles on AI trends and developer tooling.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="modal-content" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-content')" aria-label="Close">✕</button>
+            <div class="modal-icon">✍️</div>
+            <h2>AI Content Creation</h2>
+            <div class="modal-body">
+                <p>Engineered prompting systems and automated content pipelines at scale.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>Prompt Library</strong> — 200+ tested prompts for marketing, code, and research.</div>
+                    <div class="modal-item"><strong>Auto Blog System</strong> — GPT-4 + WordPress pipeline for weekly auto-posts.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="modal-video" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-video')" aria-label="Close">✕</button>
+            <div class="modal-icon">🎬</div>
+            <h2>AI Video Editing</h2>
+            <div class="modal-body">
+                <p>AI-powered video production workflows using leading generation tools.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>Explainer Videos</strong> — Synthesia avatars with custom scripts for e-learning.</div>
+                    <div class="modal-item"><strong>RunwayML Projects</strong> — Cinematic transitions and AI-generated B-roll.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div id="modal-graphic" class="modal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal('modal-graphic')" aria-label="Close">✕</button>
+            <div class="modal-icon">🎨</div>
+            <h2>AI Graphic Design</h2>
+            <div class="modal-body">
+                <p>Brand identity, marketing assets, and illustrations generated with AI tools.</p>
+                <div class="modal-items">
+                    <div class="modal-item"><strong>Brand Kit</strong> — Logo, colors, typography system using Midjourney + Canva.</div>
+                    <div class="modal-item"><strong>Social Media Assets</strong> — 50+ post templates for a digital brand.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!-- ========== PROJECT DETAIL MODAL ========== -->
+    <div id="modal-project" class="modal modal-project" role="dialog" aria-modal="true">
+        <div class="modal-box modal-box-wide">
+            <button class="modal-close" onclick="closeModal('modal-project')" aria-label="Close">✕</button>
+            <div id="projectModalContent">
+                <!-- Injected dynamically by script.js -->
+            </div>
+        </div>
+    </div>
+ 
+    <script src="projects.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,161 +1,127 @@
-{
-  "projects": [
+/**
+ * ================================================================
+ *  PROJECTS DATA — projects.js
+ * ================================================================
+ *  HOW TO ADD OR UPDATE PROJECTS:
+ *  1. Copy one of the project objects below
+ *  2. Paste it into the PROJECTS array
+ *  3. Fill in your details — that's it!
+ *
+ *  FIELDS:
+ *   id         — unique string ID (no spaces)
+ *   number     — display label like "01", "02"
+ *   emoji      — shown as thumbnail if no image
+ *   image      — path to screenshot (optional, e.g. "img/project1.jpg")
+ *   title      — project name
+ *   shortDesc  — 1–2 lines shown on the card
+ *   fullDesc   — longer paragraph shown in modal
+ *   features   — bullet points shown in modal (array of strings)
+ *   tech       — array of technology badge strings
+ *   github     — GitHub URL or "" to hide button
+ *   live       — Live demo URL or "" to hide button
+ * ================================================================
+ */
+
+const PROJECTS = [
     {
-      "id": 1,
-      "title": "AI Image Generator",
-      "description": "Web application that generates unique images from text prompts using OpenAI's DALL-E API. Features real-time generation, download options, and gallery view.",
-      "techStack": ["React", "Node.js", "Express", "OpenAI API", "Tailwind CSS"],
-      "image": "assets/ai-generator.jpg",
-      "liveDemo": "https://ai-image-generator-demo.netlify.app",
-      "github": "https://github.com/yourusername/ai-image-generator",
-      "features": ["Text-to-image generation", "4K resolution output", "Download images", "Prompt history"]
+        id: "ai-image-gen",
+        number: "01",
+        emoji: "🖼️",
+        image: "",                           // e.g. "img/ai-image-gen.jpg"
+        title: "AI Image Generator",
+        shortDesc: "Web app using OpenAI DALL-E API for seamless text-to-image generation with a clean React UI.",
+        fullDesc: "A full-featured AI image generation platform built on the OpenAI DALL-E API. Users can describe any image in natural language and receive high-quality AI-generated visuals in seconds. Includes history, download support, and preset style prompts.",
+        features: [
+            "Text-to-image generation using DALL-E 3",
+            "Image history with local storage persistence",
+            "Style preset system (photorealistic, cartoon, sketch...)",
+            "One-click image download in PNG/JPG",
+            "Responsive React UI with dark mode"
+        ],
+        tech: ["React", "Node.js", "OpenAI API", "Tailwind CSS"],
+        github: "https://github.com/utsho/ai-image-generator",
+        live: ""
     },
     {
-      "id": 2,
-      "title": "TaskFlow - Productivity App",
-      "description": "Full-stack task management application with real-time collaboration, project boards, and team messaging features.",
-      "techStack": ["MERN", "Socket.io", "JWT", "Tailwind CSS", "Redux Toolkit"],
-      "image": "assets/taskflow.jpg",
-      "liveDemo": "https://taskflow-app.vercel.app",
-      "github": "https://github.com/yourusername/taskflow",
-      "features": ["Task assignment", "Real-time updates", "File attachments", "Team chat"]
+        id: "taskflow",
+        number: "02",
+        emoji: "✅",
+        image: "",
+        title: "TaskFlow",
+        shortDesc: "High-performance productivity app with real-time collaboration powered by Socket.io and the MERN stack.",
+        fullDesc: "A collaborative task management platform where teams can create boards, assign tasks, track progress, and communicate in real time. Built entirely on the MERN stack with Socket.io for live updates — no page refresh needed.",
+        features: [
+            "Real-time task updates across all connected users",
+            "Drag-and-drop Kanban board interface",
+            "User authentication with JWT and refresh tokens",
+            "Email notifications on task assignment",
+            "Activity log and audit trail per project"
+        ],
+        tech: ["MongoDB", "Express", "React", "Node.js", "Socket.io"],
+        github: "https://github.com/utsho/taskflow",
+        live: ""
     },
     {
-      "id": 3,
-      "title": "Chatbot Assistant",
-      "description": "AI-powered customer support chatbot with NLP capabilities, trained on custom datasets for specific business domains.",
-      "techStack": ["Python", "RASA", "Flask", "React", "TensorFlow"],
-      "image": "assets/chatbot.jpg",
-      "liveDemo": "https://chatbot-demo.herokuapp.com",
-      "github": "https://github.com/yourusername/chatbot-assistant",
-      "features": ["Intent recognition", "Multi-language support", "Analytics dashboard", "Easy training interface"]
+        id: "chatbot-assistant",
+        number: "03",
+        emoji: "🤖",
+        image: "",
+        title: "Chatbot Assistant",
+        shortDesc: "NLP-powered customer support chatbot trained on domain-specific data using RASA open source.",
+        fullDesc: "A production-grade conversational AI assistant built with RASA. Handles customer service queries, appointment booking, and FAQ answering. Trained on custom intent/entity datasets and deployed via a Flask REST API with a React chat widget frontend.",
+        features: [
+            "Custom NLP model with 95%+ intent accuracy",
+            "Multi-turn conversation with context memory",
+            "Handoff to human agent when confidence is low",
+            "Admin dashboard to review and retrain from failed intents",
+            "Embeddable chat widget for any website"
+        ],
+        tech: ["Python", "RASA", "Flask", "React", "Docker"],
+        github: "https://github.com/utsho/chatbot-assistant",
+        live: ""
     },
     {
-      "id": 4,
-      "title": "Portfolio 2025",
-      "description": "Modern portfolio website with dark/light mode, smooth animations, and responsive design. Built for CSE graduates to showcase their work.",
-      "techStack": ["HTML5", "CSS3", "JavaScript", "Intersection Observer API"],
-      "image": "assets/portfolio.jpg",
-      "liveDemo": "#",
-      "github": "https://github.com/yourusername/portfolio",
-      "features": ["Responsive design", "Dark/light toggle", "Contact form", "Project filtering"]
-    },
-    {
-      "id": 5,
-      "title": "E-Learning Platform",
-      "description": "Online learning management system with video lectures, quizzes, progress tracking, and certificate generation.",
-      "techStack": ["Django", "PostgreSQL", "Bootstrap", "Celery", "Redis"],
-      "image": "assets/elearning.jpg",
-      "liveDemo": "https://elearning-platform.herokuapp.com",
-      "github": "https://github.com/yourusername/elearning-platform",
-      "features": ["Video streaming", "Automated grading", "Discussion forums", "Progress analytics"]
-    },
-    {
-      "id": 6,
-      "title": "Weather Dashboard",
-      "description": "Real-time weather application with 7-day forecast, interactive maps, and severe weather alerts using multiple weather APIs.",
-      "techStack": ["JavaScript", "OpenWeather API", "Chart.js", "Leaflet.js"],
-      "image": "assets/weather.jpg",
-      "liveDemo": "https://weather-dashboard.netlify.app",
-      "github": "https://github.com/yourusername/weather-dashboard",
-      "features": ["Location detection", "Hourly forecasts", "Weather maps", "Custom alerts"]
+        id: "n8n-lead-bot",
+        number: "04",
+        emoji: "⚡",
+        image: "",
+        title: "AI Lead Generation Pipeline",
+        shortDesc: "Automated lead qualification and outreach system built on N8N with Claude AI for intelligent scoring.",
+        fullDesc: "A fully automated lead generation workflow that scrapes LinkedIn and web forms, runs each lead through a Claude AI scoring model, and triggers personalized outreach emails — all without human intervention. Reduced manual effort by 80%.",
+        features: [
+            "Automated web scraping + form webhook integration",
+            "Claude AI lead scoring (0–100 quality score)",
+            "Conditional email sequences via Gmail/SMTP",
+            "Slack notifications for hot leads",
+            "CRM sync (Airtable / Google Sheets)"
+        ],
+        tech: ["N8N", "Claude AI", "Airtable", "Gmail API", "Webhooks"],
+        github: "",
+        live: ""
     }
-  ],
-  "skills": [
-    {
-      "category": "Frontend",
-      "items": ["React.js", "Next.js", "Vue.js", "Tailwind CSS", "TypeScript"]
-    },
-    {
-      "category": "Backend",
-      "items": ["Node.js", "Express", "Django", "FastAPI", "GraphQL"]
-    },
-    {
-      "category": "Database",
-      "items": ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "Redis"]
-    },
-    {
-      "category": "AI & ML",
-      "items": ["TensorFlow", "PyTorch", "OpenAI API", "RASA", "LangChain"]
-    },
-    {
-      "category": "DevOps & Tools",
-      "items": ["Docker", "Git", "AWS", "Vercel", "GitHub Actions"]
-    }
-  ],
-  "testimonials": [
-    {
-      "name": "Sarah Johnson",
-      "role": "Tech Lead at Google",
-      "text": "One of the most dedicated CSE graduates I've worked with. Exceptional problem-solving skills and deep understanding of full-stack development.",
-      "rating": 5
-    },
-    {
-      "name": "Md. Rahman",
-      "role": "CEO, TechStart BD",
-      "text": "Rakib delivered our MVP in just 2 weeks. The code quality was excellent, and he communicated clearly throughout the process.",
-      "rating": 5
-    },
-    {
-      "name": "Priya Sharma",
-      "role": "Senior Developer, Microsoft",
-      "text": "His portfolio projects demonstrate both technical depth and creative UI/UX thinking. Highly recommended for any web dev role.",
-      "rating": 4.5
-    }
-  ],
-  "services": [
-    {
-      "name": "Web Development",
-      "price": "$500 - $3000",
-      "duration": "2-6 weeks",
-      "description": "Custom responsive websites, e-commerce platforms, and web applications with modern tech stack."
-    },
-    {
-      "name": "AI Automation",
-      "price": "$800 - $5000",
-      "duration": "3-8 weeks",
-      "description": "Chatbots, workflow automation, data scraping, and AI model integration for business processes."
-    },
-    {
-      "name": "Research Writing",
-      "price": "$300 - $1500",
-      "duration": "1-4 weeks",
-      "description": "Academic papers, technical documentation, literature reviews, and research proposals."
-    },
-    {
-      "name": "Content Creation",
-      "price": "$200 - $1000",
-      "duration": "1-3 weeks",
-      "description": "Technical blogging, video tutorials, documentation, and social media content strategy."
-    }
-  ],
-  "experience": [
-    {
-      "company": "TechInnovate Labs",
-      "role": "Full Stack Developer Intern",
-      "duration": "June 2023 - Dec 2023",
-      "description": "Developed REST APIs and integrated AI features into existing products. Reduced API response time by 40%.",
-      "technologies": ["React", "Node.js", "MongoDB", "AWS"]
-    },
-    {
-      "company": "AI Solutions Ltd",
-      "role": "Freelance AI Developer",
-      "duration": "Jan 2024 - Present",
-      "description": "Built custom chatbots for 5+ clients. Implemented RAG pipelines for document Q&A systems.",
-      "technologies": ["Python", "LangChain", "OpenAI", "Streamlit"]
-    }
-  ],
-  "education": {
-    "degree": "B.Sc. in Computer Science & Engineering",
-    "university": "Ahsanullah University of Science and Technology",
-    "cgpa": "3.75",
-    "duration": "2020 - 2024",
-    "courses": ["AI", "Web Development", "Database Systems", "Data Structures", "Software Engineering"]
-  },
-  "socialLinks": {
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourusername",
-    "twitter": "https://twitter.com/yourusername",
-    "email": "rakib.hasan@example.com"
-  }
-}
+];
+
+/**
+ * HOW TO ADD A NEW PROJECT:
+ * ---------------------------------------------------------------
+ * Copy the template below and paste it into the PROJECTS array above:
+ *
+ * {
+ *     id: "my-new-project",
+ *     number: "05",
+ *     emoji: "🚀",
+ *     image: "img/my-project.jpg",
+ *     title: "My New Project",
+ *     shortDesc: "Short description shown on the card (1–2 lines).",
+ *     fullDesc: "Longer description shown inside the modal popup.",
+ *     features: [
+ *         "Feature one",
+ *         "Feature two",
+ *         "Feature three"
+ *     ],
+ *     tech: ["Tech 1", "Tech 2", "Tech 3"],
+ *     github: "https://github.com/yourname/your-repo",
+ *     live: "https://your-live-site.com"
+ * }
+ * ---------------------------------------------------------------
+ */
